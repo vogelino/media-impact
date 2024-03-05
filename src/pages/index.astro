@@ -2,86 +2,55 @@
 import "../styles/global.css";
 import { Image } from "astro:assets";
 import { frontmatter, Content } from "../content/home.mdx";
-import headerImage from "../assets/images/header-bg.webp";
+import headerImage from "../assets/images/header-bg.png";
 import Logo from "../components/Logo.astro";
 import Footer from "../components/Footer.astro";
+import MainLayout from "../components/MainLayout.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{frontmatter.siteTitle || "Media Impact Monitor"}</title>
-
-    <link
-      rel="preload"
-      href="/font/neue_regrade_bold_italic-webfont.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    /><link
-      rel="preload"
-      href="/font/neue_regrade_bold-webfont.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/font/neue_regrade_medium_italic-webfont.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    /><link
-      rel="preload"
-      href="/font/neue_regrade_medium-webfont.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-  </head>
-  <body
-    class="bg-repeat bg-center w-screen overflow-x-clip bg-[url(/noisy.png)] dark:bg-[url(/noisy-inverted.png)]"
-  >
-    <div class="w-full h-[16vw] min-h-40 bg-fg dark:bg-bg bg-blend-screen relative z-0">
+<MainLayout>
+  <div class="w-screen h-[16vw] min-h-40">
+    <div
+      class="w-full h-[16vw] min-h-40 bg-fg dark:bg-bg bg-blend-screen relative z-0"
+    >
       <Image
         src={headerImage}
         alt="A decorative header image of a crowd protesting"
         class="absolute w-screen h-[16vw] min-h-40 inset-0 object-cover mix-blend-screen opacity-40"
       />
       <div
-        class="
-          absolute inset-0 w-screen h-[16vw] min-h-40 bg-repeat
-          bg-center mix-blend-screen dark:mix-blend-multipy 
-          bg-[url(/noisy-dark.png)] dark:bg-[url(/noisy-inverted.png)]
-        "
+        class="absolute inset-0 w-screen h-[16vw] min-h-40 bg-repeat
+            bg-center mix-blend-screen dark:mix-blend-multipy
+            bg-[url(/noisy-dark.png)] dark:bg-[url(/noisy-inverted.png)]"
         aria-hidden="true"
       >
       </div>
     </div>
-    <main class="flex flex-col min-h-screen relative z-10">
+  </div>
+  <main class="flex flex-col min-h-screen relative z-10">
+    <div
+      class="container max-w-4xl mx-auto flex flex-col items-center justify-center gap-4 -px-0.5 md:gap-10 md:px-6"
+    >
       <div
-        class="container max-w-4xl mx-auto flex flex-col items-center justify-center gap-4 -px-0.5 md:gap-10 md:px-6"
+        class="flex justify-center w-full p-8 lg:p-10 xl:p-12
+            bg-gradient-to-b via-bg from-bg to-transparent
+            -mt-[8vw] relative z-10 shadow-[inset_0_2px_0_var(--fg)]"
       >
         <div
-          class="flex justify-center w-full p-8 lg:p-10 xl:p-12 bg-gradient-to-b via-bg from-bg to-transparent -mt-[8vw] relative z-10 shadow-[inset_0_2px_0_var(--fg)]"
+          aria-hidden="true"
+          class="absolute w-screen h-screen top-[8vw] right-full pointer-events-none dark:invert bg-right-top bg-no-repeat"
+          style={`background-image: url(/doc-shadow.png);`}
         >
-          <div
-            aria-hidden="true"
-            class="absolute w-screen h-screen top-[8vw] right-full pointer-events-none dark:invert bg-right-top bg-no-repeat"
-            style={`background-image: url(/doc-shadow.png);`}
-          >
-          </div>
-          <div
-            aria-hidden="true"
-            class="absolute w-screen h-screen top-[8vw] left-full pointer-events-none dark:invert bg-right-top bg-no-repeat -scale-x-100"
-            style={`background-image: url(/doc-shadow.png);`}
-          >
-          </div>
-          <div
-            class="prose prose-fg dark:prose-invert relative py-8 m-0
+        </div>
+        <div
+          aria-hidden="true"
+          class="absolute w-screen h-screen top-[8vw] left-full pointer-events-none dark:invert bg-right-top bg-no-repeat -scale-x-100"
+          style={`background-image: url(/doc-shadow.png);`}
+        >
+        </div>
+        <div
+          class="prose prose-fg dark:prose-invert relative py-8 m-0
               prose-headings:font-headlines prose-headings:antialiased
               prose-lead:font-headlines prose-lead:antialiased
               prose-lead:text-2xl prose-lead:leading-snug
@@ -89,17 +58,18 @@ import Footer from "../components/Footer.astro";
               prose-h2:text-3xl
               prose-h3:text-2xl
               prose-h4:text-xl"
-          >
-            <header
-              class="absolute -top-8 lg:-top-10 xl:-top-12 -translate-y-[calc(50%-1px)] -left-0 text-fg"
-            >
-              <Logo class="w-[52px] sm:w-auto" colorDg="text-bg" />
-            </header>
-            <Content />
-          </div>
+        >
+          <header class="w-full absolute -top-8 lg:-top-10 xl:-top-12 left-0 text-fg">
+            <Logo
+              class="-translate-y-[calc(50%-1px)] w-[52px] sm:w-auto"
+              colorDg="text-bg"
+            />
+            <ThemeToggle class="absolute -top-8 lg:-top-10 xl:-top-12 right-0 text-bg dark:text-fg" />
+          </header>
+          <Content />
         </div>
       </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+    </div>
+  </main>
+  <Footer />
+</MainLayout>

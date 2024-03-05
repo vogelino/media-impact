@@ -43,7 +43,8 @@
     font-display: swap;
   }
 
-  :root {
+  :root,
+  :root[data-applied-mode="light"] {
     --fg: #042f2e;
     --bg: #fcfeff;
     --bgOverlay: rgba(93, 114, 128, 0.5);
@@ -54,20 +55,19 @@
     --grayUltraLight: #f1faff;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --fg: #fff;
-      --bg: #001111;
-      --bgOverlay: rgba(66, 66, 66, 0.5);
-      --alt: #042f2e;
-      --grayDark: #ababab;
-      --grayMed: #505050;
-      --grayLight: hwb(0 17% 83%);
-      --grayUltraLight: #0d0d0d;
-    }
+  :root[data-applied-mode="dark"] {
+    --fg: #fff;
+    --bg: #001111;
+    --bgOverlay: rgba(66, 66, 66, 0.5);
+    --alt: #042f2e;
+    --grayDark: #ababab;
+    --grayMed: #505050;
+    --grayLight: hwb(0 17% 83%);
+    --grayUltraLight: #0d0d0d;
   }
 
   @media (prefers-contrast: more) {
+    :root,
     :root[data-applied-mode="light"] {
       --fg: #041c1c;
       --bg: #ffffff;
@@ -80,17 +80,15 @@
     }
   }
 
-  @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
-    :root {
-      --fg: #ffffff;
-      --bg: #041c1c;
-      --bgOverlay: rgba(0, 0, 0, 0.8);
-      --alt: #000000;
-      --grayDark: #fff6c8;
-      --grayMed: #042f2e;
-      --grayLight: #042f2e;
-      --grayUltraLight: #000;
-    }
+  :root[data-applied-mode="dark"] {
+    --fg: #ffffff;
+    --bg: #041c1c;
+    --bgOverlay: rgba(0, 0, 0, 0.8);
+    --alt: #000000;
+    --grayDark: #fff6c8;
+    --grayMed: #042f2e;
+    --grayLight: #042f2e;
+    --grayUltraLight: #000;
   }
 }
 

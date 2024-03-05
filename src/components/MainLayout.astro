@@ -1,0 +1,66 @@
+---
+import "../styles/global.css";
+import { frontmatter, Content } from "../content/home.mdx";
+
+const {
+  title = "Media Impact Monitor",
+  description = "A novel tool for protest groups and NGOs to measure and visualize their impact on public discourse",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <link
+      rel="preload"
+      href="/font/neue_regrade_bold_italic-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    /><link
+      rel="preload"
+      href="/font/neue_regrade_bold-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/font/neue_regrade_medium_italic-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    /><link
+      rel="preload"
+      href="/font/neue_regrade_medium-webfont.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <script is:inline>
+      function loaduserPrefTheme() {
+        const userPref = localStorage.getItem("theme");
+        const userPreference =
+          userPref ||
+          (matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light");
+        document.documentElement.dataset.appliedMode = userPreference;
+        userPref && localStorage.setItem("theme", userPreference);
+      }
+      loaduserPrefTheme();
+    </script>
+  </head>
+  <body
+    class="bg-repeat bg-center w-screen overflow-x-clip bg-[url(/noisy.png)] dark:bg-[url(/noisy-inverted.png)]"
+  >
+    <slot />
+  </body>
+</html>
