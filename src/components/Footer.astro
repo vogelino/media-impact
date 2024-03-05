@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import sclLogo from "../assets/images/SocialChangeLabLogo.png";
 import pfLogo from "../assets/images/PrototypeFund_Logo.svg";
+import bmbfLogo from "../assets/images/BMBF_Logo.svg";
+import { Icon } from "astro-icon/components";
 ---
 
 <footer
@@ -11,36 +13,55 @@ import pfLogo from "../assets/images/PrototypeFund_Logo.svg";
     class="flex justify-center w-full px-8 lg:px-10 xl:px-12 py-16 relative border-t border-grayLight"
   >
     <div class="flex flex-wrap max-w-prose gap-16 w-full">
-      <a
-        class="h-fit flex flex-col gap-4 group"
-        href="https://socialchangelab.org/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="no-underline text-grayDark">Hosted by</span>
-        <Image
-          src={sclLogo}
-          alt="Social Change Lab Logo"
-          width={140}
-          height={100}
-          class="origin-top-left scale-75 transition-transform group-hover:scale-[0.8] dark:brightness-[20] dark:opacity-50"
-        />
-      </a>
-      <a
-        class="h-fit flex flex-col gap-4 group"
-        href="https://prototypefund.org/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="no-underline text-grayDark">Funded by</span>
-        <Image
-          src={pfLogo}
-          alt="Prototype Fund Logo"
-          width={77}
-          height={136}
-          class="origin-top-left scale-75 transition-transform group-hover:scale-[0.8] dark:brightness-[20] dark:opacity-50"
-        />
-      </a>
+      <div class="flex flex-wrap max-w-prose gap-16">
+        <a
+          class="h-fit focusable flex flex-col gap-4 group"
+          href="https://socialchangelab.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="no-underline text-grayDark">Hosted by</span>
+          <Image
+            src={sclLogo}
+            alt="Social Change Lab Logo"
+            width={140}
+            height={100}
+            class="origin-top-left scale-75 transition-transform group-hover:scale-[0.8] dark:brightness-[20]"
+          />
+        </a>
+      </div>
+      <div class="flex flex-wrap max-w-prose gap-8">
+        <a
+          class="h-fit focusable flex flex-col gap-6 group w-fit"
+          href="https://prototypefund.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="no-underline text-grayDark w-fit">Funded by</span>
+          <Icon
+            name="logos/prototypefund"
+            class="origin-top-left scale-75 transition-transform group-hover:scale-[0.8] text-fg"
+            aria-label="Prototype Fund Logo"
+            height={136}
+            width={78}
+          />
+        </a>
+        <a
+          class="h-fit focusable flex flex-col gap-6 group"
+          href="https://prototypefund.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="no-underline text-fg">&nbsp;</span>
+          <Icon
+            name="logos/bmbf"
+            class="origin-top-left scale-75 transition-transform group-hover:scale-[0.8] text-fg"
+            aria-label="Bundesministerium für Bildung und Forschung"
+            width={200}
+            height={100}
+          />
+        </a>
+      </div>
     </div>
   </div>
 </footer>
