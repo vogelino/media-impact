@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Neue Regrade";
+    src:
+      url("/font/neue_regrade_bold_italic-webfont.woff2") format("woff2"),
+      url("/font/neue_regrade_bold_italic-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Neue Regrade";
+    src:
+      url("/font/neue_regrade_bold-webfont.woff2") format("woff2"),
+      url("/font/neue_regrade_bold-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Neue Regrade";
+    src:
+      url("/font/neue_regrade_medium_italic-webfont.woff2") format("woff2"),
+      url("/font/neue_regrade_medium_italic-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Neue Regrade";
+    src:
+      url("/font/neue_regrade_medium-webfont.woff2") format("woff2"),
+      url("/font/neue_regrade_medium-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --fg: #042f2e;
+    --bg: #fcfeff;
+    --bgOverlay: rgba(93, 114, 128, 0.5);
+    --alt: #042f2e;
+    --grayDark: #5d7280;
+    --grayMed: #d0dfe7;
+    --grayLight: #e1ecf2;
+    --grayUltraLight: #f1faff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #fff;
+      --bg: #001111;
+      --bgOverlay: rgba(66, 66, 66, 0.5);
+      --alt: #042f2e;
+      --grayDark: #ababab;
+      --grayMed: #505050;
+      --grayLight: hwb(0 17% 83%);
+      --grayUltraLight: #0d0d0d;
+    }
+  }
+
+  @media (prefers-contrast: more) {
+    :root[data-applied-mode="light"] {
+      --fg: #041c1c;
+      --bg: #ffffff;
+      --bgOverlay: rgba(93, 114, 128, 0.8);
+      --alt: #ffef9b;
+      --grayDark: #1d2022;
+      --grayMed: #666c6f;
+      --grayLight: #b7c3ca;
+      --grayUltraLight: #ffffff;
+    }
+  }
+
+  @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+    :root {
+      --fg: #ffffff;
+      --bg: #041c1c;
+      --bgOverlay: rgba(0, 0, 0, 0.8);
+      --alt: #000000;
+      --grayDark: #fff6c8;
+      --grayMed: #042f2e;
+      --grayLight: #042f2e;
+      --grayUltraLight: #000;
+    }
+  }
+}
+
+@layer components {
+  .focusable {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-fg;
+    @apply focus-visible:ring-offset-8 focus-visible:ring-offset-bg;
+  }
+}

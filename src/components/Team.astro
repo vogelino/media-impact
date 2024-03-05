@@ -1,0 +1,51 @@
+---
+import { Image } from "astro:assets"
+import portraitDavid from "../assets/images/portrait-david.jpeg"
+import portraitLennart from "../assets/images/portrait-lennart.png"
+import portraitLucas from "../assets/images/portrait-lucas.png"
+
+
+const team = [
+  {
+    image: portraitDavid,
+    name: "David Pomerenke",
+    title: "Data Science",
+    bio: "M.A. Artificial Intelligence",
+    tags: ["causal inference"],
+  },
+  {
+    image: portraitLennart,
+    name: "Lennart Klein",
+    title: "Data Science",
+    bio: "B.A. Political Science",
+    tags: ["rstats"],
+  },
+  {
+    image: portraitLucas,
+    name: "Lucas Vogel",
+    title: "Frontend UI/UX & Development",
+    bio: "B.A. Interface Design",
+    tags: [],
+  },
+]
+
+---
+
+<ul class="not-prose flex flex-col sm:grid sm:grid-cols-3 gap-4">
+  {team.map(({ image, name, title, bio, tags }) => (
+    <li class="flex flex-col gap-1">
+      <picture class="w-24 h-24 relative rounded-full overflow-clip mb-2">
+        <Image src={image} width={96} height={96} alt={`Portrait of ${name}`} />
+        <div aria-hidden="true" class="absolute inset-0 bg-fg dark:bg-alt opacity-100 mix-blend-lighten"></div>
+      </picture>
+      <h3 class="font-bold text-xl font-headlines antialiased">{name}</h3>
+      <p class="leading-tight mb-1">
+        {title}<br />
+        {bio}
+      </p>
+      {tags.map((tag) => (
+        <small class="w-fit px-1.5 py-0.5 bg-grayUltraLight text-fg rounded-sm">{tag}</small>
+      ))}
+    </li>
+  ))}
+</ul>
